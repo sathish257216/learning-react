@@ -1,0 +1,25 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "Learn React basic",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sathish257216/learning-react.git"
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "Sathish Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sathish257216/learning-react/issues"
+  },
+  "homepage": "https://github.com/sathish257216/learning-react#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
