@@ -1,15 +1,18 @@
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import HomeComponent from './Home/Home';
 import HeaderComponent from './shared/components/Header';
 
 
 const App = () => {
   return (
-    <div className="app-container">
-      <HeaderComponent />
-      <HomeComponent />
-    </div>
+    <>
+      <div className="app-container">
+        <HeaderComponent />
+        <Outlet />
+      </div>
+    </>
   );
 }
+
 
 export default App;
