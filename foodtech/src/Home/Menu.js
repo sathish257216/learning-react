@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FOOD_DUMMY_IMAGE_URL, MENU_API_URL, MENU_IMAGE_URL } from "../utils/constant";
 import Shimmer from "./../shared/components/Shimmer"
+import { useParams } from "react-router-dom";
 
 const MenuComponent = () => {
     //const menu = useRef(null); 
@@ -8,11 +9,13 @@ const MenuComponent = () => {
     const [restaurantMenu, setRestaurantMenu] = useState(null);
     const [restaurantDetails, setRestaurantDetails] = useState(null);
     const [error, setError] = useState(null);
-    
+    const params = useParams();
+    console.log('params --- ', params);
+
     useEffect(() => {
         const fetchMenuData = async () => {
             setIsLoading(true);
-            fetch(MENU_API_URL)
+            fetch(MENU_API_URL.replace('{id}', params.resId))
               .then((response) => response.json())
               .then((data) => {
                 //menu.current = data.data.cards;
@@ -47,8 +50,9 @@ const MenuComponent = () => {
                     <h4>{item?.card?.info?.name}</h4>
                     <span>Price - {item?.card?.info?.price/100}</span>
                   </div>
-                  <div className="food-img">
+                  <div className="food-right-cont">
                     <img src={ MENU_IMAGE_URL + (item?.card?.info?.imageId || FOOD_DUMMY_IMAGE_URL)} alt="food-imageId"></img>
+                    <button className="common-btn add-to-cart">Add</button>
                   </div>
                   </div>
               ))

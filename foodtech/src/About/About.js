@@ -1,7 +1,12 @@
+import User from "./User";
+import UserClass from "./UserClass";
+
 const AboutComponent = () => {
     return (
-        <div>
-            <h2>This is a food tech company!!</h2>
+        <div className="about-container">
+            <h2>People work here</h2>
+            <User name="Sathish Kumar (Functional)" location="Troy"/>
+            <UserClass name="Sathish Kumar (Class)" location="Troy"/>
         </div>
     )
 }
