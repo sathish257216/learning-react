@@ -1,76 +1,109 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ResturantCardComponent from "../shared/components/ResturantCard";
+import { RESTURANT_API_URL } from "../utils/constant";
+import ShimmerComponent from "../shared/components/Shimmer";
 
 const HomeComponent = () => {
-  let resturantDetails = [];
-  const [listOfResturants, setListOfResturants] = useState();
+  const resturantDetails = useRef(null);
+  const [listOfResturants, setListOfResturants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  
   useEffect(() => {
+    const fetchResturantData = async () => {
+      setIsLoading(true);
+      fetch(RESTURANT_API_URL)
+        .then((response) => response.json())
+        .then((data) => {
+          resturantDetails.current = data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+          //console.log('resturantDetails --- ', data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants, resturantDetails);
+          setListOfResturants(resturantDetails.current);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          setError(error);
+          console.error("Error fetching the data:", error);
+        });
+    };
+
     fetchResturantData();
   }, []);
 
-  const fetchResturantData = async () => {
-    setIsLoading(true);
-    fetch("/resturant.json")
-      .then((response) => response.json())
-      .then((data) => {
-        resturantDetails = data.resturant;
-        setListOfResturants(resturantDetails);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.error("Error fetching the data:", error);
-      });
-  };
+  /*const findField = (obj, field) => {
+    for (const key in obj) {
+      if (key === field && Array.isArray(obj[key]) && obj[key]?.length > 0) {
+        return obj[key];
+      } else if (typeof obj[key] === "object") {
+        const result = findField(obj[key], field);
+        if (result !== undefined) {
+          return result;
+        }
+      }
+    }
+    return [];
+  }*/
+
 
   function filterResturant() {
-    const filterList = listOfResturants.filter(
+    const filterList = resturantDetails.current.filter(
       (resturant) => resturant.info.avgRating > 4
     );
-    console.log("filterList", filterList);
+    //console.log("filterList", filterList);
     setListOfResturants(filterList);
   }
 
-  function searchResturant() {
+  const searchResturant = () => {
+    const filterList = resturantDetails.current.filter(
+        (resturant) => resturant.info.name.toLowerCase().includes(searchText)
+    );
+    
+    //console.log("filterList", filterList);
+    setListOfResturants(filterList);
     console.log("Search resturant");
   }
 
   function resetResturant() {
-    setListOfResturants(resturantDetails);
+    setListOfResturants(resturantDetails.current);
   }
 
   return (
     <div className="res-container">
-      <div className="top-bar">
-        <div className="filter-bar">
-          <button className="filter-btn common-btn" onClick={filterResturant}>
-            Top Rated
-          </button>
-          <button className="filter-btn common-btn" onClick={resetResturant}>
-            Reset
-          </button>
+        <div className="error-message">
+            <p>{error}</p>
         </div>
-        <div className="serach-bar">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search..."
-          ></input>
-          <button className="search-btn common-btn" onClick={searchResturant}>
-            Search
-          </button>
+        <div className="top-bar">
+            <div className="filter-bar">
+            <button className="filter-btn common-btn" onClick={filterResturant}>
+                Top Rated
+            </button>
+            <button className="filter-btn common-btn" onClick={resetResturant}>
+                Reset
+            </button>
+            </div>
+            <div className="serach-bar">
+            <input
+                type="text"
+                className="search-input"
+                placeholder="Search..."
+                value= {searchText}
+                onChange={(e) => {setSearchText(e.target.value)}}
+            ></input>
+            <button className="search-btn common-btn" onClick={searchResturant}>
+                Search
+            </button>
+            </div>
         </div>
-      </div>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div className="card-container">
-          {listOfResturants?.map((hotel) => (
-            <ResturantCardComponent key={hotel.info.id} resData={hotel} />
-          ))}
-        </div>
-      )}
+        {isLoading ? (
+            <ShimmerComponent />
+        ) : (
+            <div className="card-container">
+            {listOfResturants?.map((hotel) => (
+                <ResturantCardComponent key={hotel.info.id} resData={hotel} />
+            ))}
+            </div>
+        )}
     </div>
   );
 };
