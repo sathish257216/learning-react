@@ -18,7 +18,7 @@ const CartComponent = () => {
                 </div>) :
                     (<div>
                         <div className="flex justify-center">
-                            <h2>AddedItems in Cart</h2>
+                            <h2>Added items in Cart</h2>
                             <button className="common-btn remove-to-cart" onClick={() => handleClear()}>Clear</button>
                         </div>
                         {
