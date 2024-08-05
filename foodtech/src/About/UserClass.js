@@ -4,13 +4,22 @@ class UserClass extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = { count: 0, count2: 2 };
+        console.log("Child constructor");
+    }
+
+    componentDidMount() {
+        console.log("Child Component did mount");
     }
 
     render() {
+        console.log("Child render");
         return (
-            <div class="user-card">
-                <h3>{this.props.name}</h3>
-                <h3>{this.props.location}</h3>
+            <div className="user-card">
+                <div>
+                    <h3>Name: {this.props.user.login}</h3>
+                    <img src={this.props.user.avatar_url} alt="user-img"></img>
+                </div>
             </div>
         );
     }

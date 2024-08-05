@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import ResturantCardComponent from "../shared/components/ResturantCard";
+import ResturantCardComponent, { withHighlyRatedResturantCardComponent } from "../shared/components/ResturantCard";
 import { RESTURANT_API_URL } from "../utils/constant";
 import ShimmerComponent from "../shared/components/Shimmer";
 
@@ -10,6 +10,8 @@ const HomeComponent = () => {
   const [error, setError] = useState(null);
   const [searchText, setSearchText] = useState("");
   
+  const HighlyRatedResturant = withHighlyRatedResturantCardComponent(ResturantCardComponent); 
+
   useEffect(() => {
     const fetchResturantData = async () => {
       setIsLoading(true);
@@ -99,9 +101,12 @@ const HomeComponent = () => {
             <ShimmerComponent />
         ) : (
             <div className="card-container">
-            {listOfResturants?.map((hotel) => (
-                <ResturantCardComponent key={hotel.info.id} resData={hotel} />
-            ))}
+            {
+              listOfResturants?.map((hotel) => (
+                  hotel.info.avgRating > 4 ? <HighlyRatedResturant key={hotel.info.id} resData={hotel} /> :
+                  <ResturantCardComponent key={hotel.info.id} resData={hotel} />
+              ))
+            }
             </div>
         )}
     </div>

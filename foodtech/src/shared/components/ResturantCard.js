@@ -32,4 +32,15 @@ const ResturantCardComponent = (props) => {
   );
 };
 
+export const withHighlyRatedResturantCardComponent = (ResturantCardComponent) => {
+  return (props) => {
+    return (
+      <div className="higher-card">
+        <ResturantCardComponent {...props} />
+        <div className="highly-rated">Highly Rated</div>
+      </div>
+    )
+  }
+}
+
 export default ResturantCardComponent;
