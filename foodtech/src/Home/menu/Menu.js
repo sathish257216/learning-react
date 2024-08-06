@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { FOOD_DUMMY_IMAGE_URL, MENU_API_URL, MENU_IMAGE_URL } from "../utils/constant";
-import Shimmer from "./../shared/components/Shimmer"
+import { useEffect, useState } from "react";
+import { MENU_API_URL } from "../../utils/constant";
+import { useParams } from "react-router-dom";
+import ItemList from "./ItemList";
 
 const MenuComponent = () => {
     //const menu = useRef(null); 
@@ -8,18 +9,25 @@ const MenuComponent = () => {
     const [restaurantMenu, setRestaurantMenu] = useState(null);
     const [restaurantDetails, setRestaurantDetails] = useState(null);
     const [error, setError] = useState(null);
+    const params = useParams();
     
+    /*if(resMenuData === null) {
+      return <Shimmer />;
+    }
+    console.log('resMenuData --- ', resMenuData);
+    setRestaurantDetails(resMenuData?.data?.cards[2]?.card?.card?.info);
+    setRestaurantMenu(resMenuData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card);
+    */
     useEffect(() => {
         const fetchMenuData = async () => {
             setIsLoading(true);
-            fetch(MENU_API_URL)
+            fetch(MENU_API_URL.replace('{id}', params.resId))
               .then((response) => response.json())
               .then((data) => {
                 //menu.current = data.data.cards;
-                console.log('Menu --- ', data);
+                //console.log('Menu --- ', data);
                 setRestaurantDetails(data?.data?.cards[2]?.card?.card?.info);
-                setRestaurantMenu(data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards);
-                console.log('restaurantDetails ---->>>  ', restaurantDetails);
+                setRestaurantMenu(data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card);
                 setIsLoading(false);
               })
               .catch((error) => {
@@ -32,31 +40,19 @@ const MenuComponent = () => {
     }, []);
 
     return (
-      <div>{isLoading ? <Shimmer /> :
-        <div className="menu-container">
+      <div className="menu-container">
           <div className="hotel-details">
               <h3>{restaurantDetails?.name}</h3>
               <h3>{restaurantDetails?.cuisines}</h3>
           </div>
           <div className="menu-details">
             {
-              restaurantMenu?.map(item => (
-                <div key={item?.card?.info?.id} className="food-card">
-                  {console.log(item?.card?.info)}
-                  <div className="food-details">
-                    <h4>{item?.card?.info?.name}</h4>
-                    <span>Price - {item?.card?.info?.price/100}</span>
-                  </div>
-                  <div className="food-img">
-                    <img src={ MENU_IMAGE_URL + (item?.card?.info?.imageId || FOOD_DUMMY_IMAGE_URL)} alt="food-imageId"></img>
-                  </div>
-                  </div>
+              restaurantMenu?.itemCards?.map(item => (
+                <ItemList key={item?.card?.info?.id} restaurantMenu={item} />
               ))
             }
           </div>
         </div>
-      }
-      </div>
     )
 }
 

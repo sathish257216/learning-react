@@ -1,0 +1,87 @@
+{
+  "info": {
+    "id": "750225",
+    "name": "Daily Kitchen - Homely Meals",
+    "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/5/19/4ec6a5b6-7c8d-4e10-b8a3-317922e419da_750225.JPG",
+    "locality": "6TH BLOCK",
+    "areaName": "Koramangala",
+    "costForTwo": "₹400 for two",
+    "cuisines": [
+      "Home Food",
+      "Indian",
+      "North Indian",
+      "Thalis"
+    ],
+    "avgRating": 4.2,
+    "parentId": "444382",
+    "avgRatingString": "4.2",
+    "totalRatingsString": "100+",
+    "sla": {
+      "deliveryTime": 30,
+      "lastMileTravel": 0.8,
+      "serviceability": "SERVICEABLE",
+      "slaString": "20-30 mins",
+      "lastMileTravelString": "0.8 km",
+      "iconType": "ICON_TYPE_EMPTY"
+    },
+    "availability": {
+      "nextCloseTime": "2024-08-04 02:00:00",
+      "opened": true
+    },
+    "badges": {
+      "textExtendedBadges": [
+        {
+          "iconId": "guiltfree/GF_Logo_android_3x",
+          "shortDescription": "options available",
+          "fontColor": "#7E808C"
+        }
+      ]
+    },
+    "isOpen": true,
+    "type": "F",
+    "badgesV2": {
+      "entityBadges": {
+        "imageBased": {},
+        "textBased": {},
+        "textExtendedBadges": {
+          "badgeObject": [
+            {
+              "attributes": {
+                "description": "",
+                "fontColor": "#7E808C",
+                "iconId": "guiltfree/GF_Logo_android_3x",
+                "shortDescription": "options available"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "aggregatedDiscountInfoV3": {
+      "header": "50% OFF",
+      "subHeader": "UPTO ₹100"
+    },
+    "differentiatedUi": {
+      "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      "differentiatedUiMediaDetails": {
+        "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+        "lottie": {},
+        "video": {}
+      }
+    },
+    "reviewsSummary": {},
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {},
+    "externalRatings": {
+      "aggregatedRating": {
+        "rating": "--"
+      }
+    },
+    "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+  },
+  "analytics": {},
+  "cta": {
+    "link": "https://www.swiggy.com/restaurants/daily-kitchen-homely-meals-6th-block-koramangala-bangalore-750225",
+    "type": "WEBLINK"
+  }
+}

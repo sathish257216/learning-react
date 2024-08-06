@@ -1,0 +1,127 @@
+{
+    "card": {
+      "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+      "info": {
+        "id": "100348976",
+        "name": "Chicken Kebabs Platter- (Serves 2)",
+        "category": "Kebabs Platter and Starters",
+        "description": "Serves 2 | Chicken Tikka Boneless (4 Pcs) + Chicken Seekh Kebab (6 Pcs)+ Chicken Tangadi Mirch Masala (2 Pcs) + Tandoori Chicken Wings (4 Pcs)-A mighty shareable Chicken starter platter served with Dips, Salad & Mint Chutney.",
+        "imageId": "90071acd3832fda9e1a08519ce35d280",
+        "inStock": 1,
+        "price": 49900,
+        "variants": {},
+        "variantsV2": {},
+        "addons": [
+          {
+            "groupId": "143314155",
+            "groupName": "Add-on Appetisers - Non Veg",
+            "choices": [
+              {
+                "id": "115456056",
+                "name": "Chicken Tikka-Boneless (8 Pcs)  (Save Rs 50)",
+                "price": 29900,
+                "inStock": 1,
+                "isEnabled": 1
+              },
+              {
+                "id": "115456050",
+                "name": "Tandoori Chicken Wings (6Pcs) (Save Rs 40)",
+                "price": 26900,
+                "inStock": 1,
+                "isEnabled": 1
+              }
+            ],
+            "maxAddons": 2,
+            "maxFreeAddons": -1
+          },
+          {
+            "groupId": "143314164",
+            "groupName": "Top ups",
+            "choices": [
+              {
+                "id": "115456054",
+                "name": "Mint Chutney",
+                "price": 1500,
+                "inStock": 1,
+                "isVeg": 1,
+                "isEnabled": 1
+              },
+              {
+                "id": "115456053",
+                "name": "Salan",
+                "price": 5900,
+                "inStock": 1,
+                "isVeg": 1,
+                "isEnabled": 1
+              },
+              {
+                "id": "115456051",
+                "name": "Raita",
+                "price": 4900,
+                "inStock": 1,
+                "isVeg": 1,
+                "isEnabled": 1
+              },
+              {
+                "id": "115456052",
+                "name": "Garden Salad",
+                "price": 4900,
+                "inStock": 1,
+                "isVeg": 1,
+                "isEnabled": 1
+              }
+            ],
+            "maxAddons": 4,
+            "maxFreeAddons": -1
+          },
+          {
+            "groupId": "143314167",
+            "groupName": "Add on Desserts",
+            "choices": [
+              {
+                "id": "115456047",
+                "name": "Chocolate Brownie (Save Rs 20)",
+                "price": 11900,
+                "inStock": 1,
+                "isVeg": 1,
+                "isEnabled": 1
+              },
+              {
+                "id": "115456046",
+                "name": "Angoori Jamun (12 Nos) (Save Rs 20)",
+                "price": 12900,
+                "inStock": 1,
+                "isVeg": 1,
+                "isEnabled": 1
+              }
+            ],
+            "maxAddons": 2,
+            "maxFreeAddons": -1
+          }
+        ],
+        "itemAttribute": {
+          "vegClassifier": "NONVEG",
+          "portionSize": "Serves 2"
+        },
+        "ribbon": {
+          "text": "Bestseller",
+          "textColor": "#ffffff",
+          "topBackgroundColor": "#d53d4c",
+          "bottomBackgroundColor": "#b02331"
+        },
+        "type": "ITEM",
+        "itemBadge": {},
+        "badgesV2": {},
+        "isBestseller": true,
+        "ratings": {
+          "aggregatedRating": {
+            "rating": "4.2",
+            "ratingCount": "21 ratings",
+            "ratingCountV2": "21"
+          }
+        }
+      },
+      "analytics": {},
+      "hideRestaurantDetails": true
+    }
+  }

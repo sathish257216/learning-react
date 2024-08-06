@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App';
 import HomeComponent from './Home/Home';
-import AboutComponent from './About/About';
-import CartComponent from './Cart/Cart';
-import PageError from './shared/components/pageError';
-import MenuComponent from './Home/Menu';
+import MenuComponent from './Home/menu/Menu';
+import Contact from './contact/Contact';
+import './index.css';
+import PageError from './shared/components/PageError';
+
+const AboutComponent = lazy(() => import ('./About/About'));
+const CartComponent = lazy(() => import ('./Cart/Cart'));
 
 
 const appRoute = createBrowserRouter([
@@ -22,11 +24,15 @@ const appRoute = createBrowserRouter([
       },
       { 
         path: '/about',
-        element: <AboutComponent />
+        element: <Suspense fallback={<h1>Loading...</h1>}><AboutComponent /></Suspense>
+      },
+      { 
+        path: '/contact',
+        element: <Suspense fallback={<h1>Loading...</h1>}><Contact /></Suspense>
       },
       {
         path: '/cart',
-        element: <CartComponent />
+        element: <Suspense fallback={<h1>Loading...</h1>}><CartComponent /></Suspense>
       },
       {
         path: '/menu/:resId',

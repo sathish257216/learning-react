@@ -63,9 +63,6 @@
   box-sizing: border-box;  
 }
 
-.login-btn {
-  padding: 10px;
-}
 .shimmer-container {
   display: flex;
   flex-wrap: wrap;
@@ -83,6 +80,24 @@
   }
 }
 
+.about-container {
+  padding: 20px;
+  .user-card {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    border-radius: 10px; /* Radius to make the corners rounded */
+    outline: none; /* Remove the default outline */
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 20px;
+    img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+
 .menu-container {
   padding:20px;
   .food-card {
@@ -95,11 +110,20 @@
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    img {
+    .food-right-cont {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 10px;
-      width: 200;
-      height: 150px;
-      padding-right: 20px;
+      img {
+        width: 230;
+        height: 140px;
+        padding-bottom: 10px;
+      }
+      .add-to-cart {
+        width: 100px;
+        height:50px;
+      }
     }
   
   }
@@ -123,12 +147,26 @@
       height: 150px;
     }
   }
-
+  .highly-rated {
+    position: absolute;
+    background-color: black;
+    top: 20px;
+    left: 30px;
+    padding: 5px;
+    color: white;
+    border-radius: 10px; /* Radius to make the corners rounded */
+    outline: none; /* Remove the default outline */
+    
+  }
+  
   .hotel-details {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-size: 14px;
+    .hotel-name {
+      align-items: center;
+    }
     h4, h5 {
       margin: 0;
     }
@@ -147,4 +185,14 @@
 
 .error-message {
   color: red;
+}
+.btn-container {
+  margin: 10px;
+  .online-btn {
+    background-color: green;
+  }
+  
+  .offline-btn {
+    background-color: red;
+  }
 }
