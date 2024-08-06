@@ -1,12 +1,12 @@
-import React, { Suspense, lazy} from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App';
 import HomeComponent from './Home/Home';
-import PageError from './shared/components/pageError';
 import MenuComponent from './Home/menu/Menu';
 import Contact from './contact/Contact';
+import './index.css';
+import PageError from './shared/components/PageError';
 
 const AboutComponent = lazy(() => import ('./About/About'));
 const CartComponent = lazy(() => import ('./Cart/Cart'));

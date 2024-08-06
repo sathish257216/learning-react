@@ -12,7 +12,7 @@ const HeaderComponent = () => {
     setIsLoggedIn(!isLoggedIn);
   };
   const cartItems = useSelector((store) => store.cart.items);
-  console.log('cartItems  ', cartItems)
+
   return (
     <header className="app-header">
       <img src={process.env.PUBLIC_URL + '/favicon.png'} className="app-logo" alt="logo" />
