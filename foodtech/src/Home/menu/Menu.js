@@ -37,10 +37,12 @@ const MenuComponent = () => {
               });
           };
           fetchMenuData();
-    }, []);
+    }, [params.resId]);
 
     return (
       <div className="menu-container">
+          <div>{error}</div>
+          <div>{isLoading ? 'Loading .... ': ''}</div>
           <div className="hotel-details">
               <h3>{restaurantDetails?.name}</h3>
               <h3>{restaurantDetails?.cuisines}</h3>
